@@ -1,31 +1,22 @@
-let now = new Date();
-let currentYear = now.getFullYear();
-let currentMonth = now.getMonth();
-let currentDay = now.getDate();
+const secondsInMinutes = 60,
+      minutesInHour = 60,
+      hoursInDay = 24,
+      daysInYear = 365.24;
 
-let userYear;
-let userMonth;
-let userDay;
+let seconds, userAge;
 
 function getUserInput(){ 
-    userYear = document.getElementById('userYear');
-    userMonth = document.getElementById('userMonth');
-    userDay = document.getElementById('userDay');
-
+    userAge = document.getElementById('userAge');
     getResult();
 }
 
 document.getElementById("calculate").addEventListener('click', getUserInput)
 
 function getResult(){
-    let resultYear = (currentYear - userYear.value) * (365*24*3600);
-    let resultMonth = (currentMonth - userMonth.value) * (30*86400);
-    let resultDay = (currentDay - userDay.value) * (3600*24);
+    
+    seconds = userAge.value * secondsInMinutes * minutesInHour * hoursInDay * daysInYear;
 
-    let totalSeconds = resultYear + resultMonth + resultDay;
-
-    console.log(totalSeconds);
-    document.getElementById("Output").innerHTML = "Seconds: " + totalSeconds.toLocaleString("en-US");
+    document.getElementById("Output").innerHTML = "Seconds: " + seconds.toLocaleString("en-US");
 }
 
 
